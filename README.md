@@ -13,3 +13,9 @@ Open in browser:
 
     firefox /writable/path/to/chat.txt.0.html &
 
+
+Example output
+---
+
+<img src="chat_example.jpg" alt="" />
+
