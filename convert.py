@@ -72,18 +72,18 @@ class ChatMessage():
 
     def __init__(self, attachments, author, text, time):
         self._author = author
-        self._attachments = attachments 
+        self._attachments = attachments
         #self._html = "" #html
         self._text = text
         self._time = time
 
 
     def getAttachments(self):
-        return self._attachments 
+        return self._attachments
 
     def setAttachments(self, attachments):
-        self._attachments = attachments 
-        return self 
+        self._attachments = attachments
+        return self
 
     def getAuthor(self):
         return self._author
@@ -112,7 +112,7 @@ class ChatMessage():
     def setText(self, text):
         self._text = text
         return self
-    
+
     def appendText(self, text):
         self._text += text
         return self
@@ -250,16 +250,16 @@ def read_file():
                 #parts = parts[1].split(" ")
                 text = parts[1]
                 attachments = []
-                if text.find(" (Datei") != -1 or text.find(" (File") != -1: 
+                if text.find(" (Datei") != -1 or text.find(" (File") != -1:
                     text = "Attached file(s)."
                     attachments = re.sub("\(File.*\)", "", re.sub("\(Datei.*\)", "", parts[1])).strip().split(";")
-                chatMessage_previous = ChatMessage(attachments, author, text, time) 
+                chatMessage_previous = ChatMessage(attachments, author, text, time)
             else:
                 if chatMessage_previous:
                     chatMessage_previous.appendText("\r\n<br/>" + line)
                 else:
                     print("Message starts without author, time, et alia meta data: ", line)
-        # Store the last chat message: 
+        # Store the last chat message:
         if chatMessage_previous:
             chatMessages.append(chatMessage_previous)
             del chatMessage_previous
